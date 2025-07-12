@@ -625,4 +625,126 @@ body {
     .auth-footer p {
         color: #9CA3AF;
     }
-}
+}        /* --- Notification Styles --- */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid var(--primary-color);
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            max-width: 400px;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            z-index: 10000;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification-success {
+            border-left-color: var(--secondary-color);
+        }
+
+        .notification-error {
+            border-left-color: #EF4444; /* Tailwind red-500 */
+        }
+
+        .notification-info {
+            border-left-color: #3B82F6; /* Tailwind blue-500 */
+        }
+
+        .notification-content {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex: 1;
+        }
+
+        .notification-content i {
+            color: var(--primary-color);
+        }
+
+        .notification-success .notification-content i {
+            color: var(--secondary-color);
+        }
+
+        .notification-error .notification-content i {
+            color: #EF4444;
+        }
+
+        .notification-info .notification-content i {
+            color: #3B82F6;
+        }
+
+        .notification-close {
+            background: none;
+            border: none;
+            color: var(--text-light);
+            cursor: pointer;
+            padding: 0.25rem;
+            border-radius: 0.25rem;
+            transition: all 0.3s ease;
+        }
+
+        .notification-close:hover {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+        }
+
+        /* --- Password Strength Bar Styles --- */
+        .strength-bar {
+            position: relative;
+            height: 4px; /* Adjust height as needed */
+            background-color: #e0e0e0; /* Background for empty bar */
+            border-radius: 2px;
+            margin-top: 5px;
+            overflow: hidden;
+        }
+
+        .strength-bar::after {
+            content: '';
+            display: block;
+            height: 100%;
+            width: 0%; /* Default empty state */
+            border-radius: 2px;
+            transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out;
+        }
+
+        /* Strength levels based on calculated strength (0-5) */
+        .strength-bar.none::after { /* For strength 0 (empty input) */
+            width: 0%;
+            background: transparent;
+        }
+
+        .strength-bar.very-weak::after {
+            width: 20%;
+            background: #EF4444; /* Red */
+        }
+
+        .strength-bar.weak::after {
+            width: 40%;
+            background: #F59E0B; /* Orange */
+        }
+
+        .strength-bar.medium::after {
+            width: 60%;
+            background: #F59E0B; /* Orange */
+        }
+
+        .strength-bar.good::after {
+            width: 80%;
+            background: #10B981; /* Green */
+        }
+
+        .strength-bar.strong::after {
+            width: 100%;
+            background: #10B981; /* Green */
+        }
+        
